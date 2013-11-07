@@ -6,18 +6,15 @@
 FROM base
 MAINTAINER Maxime Petazzoni <max@signalfuse.com>
 
-RUN apt-get update
-RUN apt-get -y dist-upgrade
-RUN apt-get -y install openjdk-7-jdk wget git vim
+MKDIR /.docker
+ADD provision.sh /.docker/
 
-# Install Docker
-RUN sh -c "wget -q -O - https://get.docker.io/gpg | apt-key add -"
-RUN sh -c "echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
-RUN apt-get update
-RUN apt-get -y install lxc-docker
+# Running the provisioning script is disabled until Docker provides a way to do
+# privileged image builds automatically (through a RUNP command for example).
+#
+# RUN /.docker/provision.sh
 
-# Get pipework
-RUN mkdir -p /.docker
-ADD https://raw.github.com/jpetazzo/pipework/master/pipework /.docker/
+RUN rm -f /.docker/provision.sh
+RUN date > /etc/provisioned_at
 
 CMD ["/bin/bash"]

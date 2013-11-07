@@ -5,9 +5,11 @@ Base Docker image for SignalFuse container images
 the software installed during the provisioning steps required the build to run
 in privileged mode, which is not yet supported by Docker.
 
-The only way to build this image for now is to start a shell in the `base`
-image, in privileged mode, and manually execute the steps. When done, exit the
-container and commit the container's state as an image.
+The only way to build this image for now is to start a shell in the
+`base` image, in privileged mode, and manually execute the steps (or
+`docker insert` the provisioning script into a base image, execute it
+and commit the result). When done, exit the container and commit the
+container's state as an image.
 
 ```
 $ docker run -i -t -privileged base bash
@@ -28,6 +30,7 @@ used by SignalFuse. It provides:
 - Java 7, via `openjdk-7-jdk`;
 - Docker, to have the client available to talk to Docker daemons from within a
   container;
+- Pipework, for advanced container networking (if needed);
 - Git and Wget, to download packages or repositories during provisioning of
   sub-images;
 - Vim, for sane editing when one needs to drop into a shell inside the
