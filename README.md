@@ -1,32 +1,31 @@
-Base Docker image for SignalFuse container images
-=================================================
+Base Docker image for Maestro-enabled components
+================================================
 
 *Note:* you actually cannot run `docker build` with this Dockerfile as
 some of the software installed during the provisioning steps required
 the build to run in privileged mode, which is not yet supported by
 Docker.
 
-The only way to build this image for now is to start a shell in the
-`base` image, in privileged mode, and manually execute the steps (or
-`docker insert` the provisioning script into a base image, execute it
-and commit the result). When done, exit the container and commit the
-container's state as an image.
+The only way to build this image for now is to build the image once,
+then start a container from it and manually execute the provisioning
+script. Once done, exit the container and commit the container's state
+as an image.
 
 ```
-$ docker run -i -t -privileged base bash
-root@x:/# apt-get update
-...
-root@x:/# apt-get -y install ...
+$ docker build -t quay.io/signalfuse/maestro-base:<tag> .
+$ docker run -privileged -i -t -privileged quay.io/signalfuse/maestro-base
+root@x:/# .docker/provision.sh
 ...
 root@x:/# exit
-$ docker commit <x> mpetazzoni/maestro-base
+$ docker commit <x> quay.io/signalfuse/maestro-base:<tag>
 ```
 
 What's inside?
 --------------
 
-This base image provides a sane foundation for the other images created
-and used by SignalFuse. It provides:
+This base image provides a sane foundation for the Docker images of
+components orchestrated by
+[Maestro](https://github.com/signalfuse/maestro-ng). It provides:
 
 - Java 7, via `openjdk-7-jdk`;
 - Docker, to have the client available to talk to Docker daemons from
@@ -35,21 +34,18 @@ and used by SignalFuse. It provides:
 - Git and Wget, to download packages or repositories during provisioning
   of sub-images;
 - Vim, for sane editing when one needs to drop into a shell inside the
-  container.
+  container;
+- Maestro guest utils functions;
+- Pipestash, for log forwarding to Logstash.
 
 Usage
 -----
 
-The most common way to use this base image is for Maestro orchestrated
-containers. Start your `Dockerfile` with the following to get started:
+Simply start your `Dockerfile` with the following FROM line to get
+started:
 
 ```
-FROM mpetazzoni/maestro-base
-
-# Install Maestro for guest utils
-RUN apt-get update
-RUN apt-get -y install python python-setuptools
-RUN easy_install http://github.com/signalfuse/maestro-ng/archive/master.zip
+FROM quay.io/signalfuse/maestro-base:0.1.5
 
 # Rest goes here
 ```
