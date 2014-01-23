@@ -26,13 +26,17 @@ apt-get -y install lxc-docker
 # Get pipework.
 wget -O /.docker/pipework https://raw.github.com/jpetazzo/pipework/master/pipework
 
-# Install Maestro for guest utils
+# Install Maestro for guest utils.
 apt-get -y install python-setuptools
 easy_install http://github.com/signalfuse/maestro-ng/archive/maestro-0.1.5.zip
 
-# Install pipestash (logstash forwarder)
+# Install pipestash (logstash forwarder).
 apt-get -y install python-redis
 git clone https://github.com/1stone/pipestash.git /.docker/pipestash
 cd /.docker/pipestash
 python setup.py install
-cd .. && rm -rf pipestash
+
+# Clean up.
+cd /
+rm -rf /.docker/pipestash /.bash_history
+apt-get clean

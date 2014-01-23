@@ -1,15 +1,16 @@
 Base Docker image for Maestro-enabled components
 ================================================
 
-*Note:* you actually cannot run `docker build` with this Dockerfile as
-some of the software installed during the provisioning steps required
-the build to run in privileged mode, which is not yet supported by
-Docker.
+*Note:* you actually cannot run `docker build` with this Dockerfile and
+end-up with the fully built image, as some of the software installed
+during the provisioning steps required the build to run in privileged
+mode, which is not yet supported by Docker. Because of this, running the
+provisioning script is disabled in the Dockerfile.
 
 The only way to build this image for now is to build the image once,
-then start a container from it and manually execute the provisioning
-script. Once done, exit the container and commit the container's state
-as an image.
+then start a privileged container from it and manually execute the
+provisioning script. Once done, exit the container and commit the
+container's state as an image.
 
 ```
 $ docker build -t quay.io/signalfuse/maestro-base:<tag> .
