@@ -12,10 +12,9 @@ rm -f /sbin/initctl
 ln -s /bin/true /sbin/initctl
 
 apt-get update
-apt-get -y dist-upgrade
 
 # Install Java, Python and some tools.
-apt-get -y install openjdk-7-jdk wget git vim golang-go
+apt-get -y install openjdk-7-jdk wget git vim
 
 # Install Docker.
 wget -q -O - https://get.docker.io/gpg | apt-key add -
