@@ -8,6 +8,7 @@ MAINTAINER Maxime Petazzoni <max@signalfuse.com>
 
 RUN mkdir -p /.docker
 ADD provision.sh /.docker/
+ADD maestro.sh /.docker/
 
 # Running the provisioning script is disabled until Docker provides a way to do
 # privileged image builds automatically (through a RUNP command for example).

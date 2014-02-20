@@ -9,13 +9,23 @@ provisioning script is disabled in the Dockerfile.
 
 The only way to build this image for now is to build the image once,
 then start a privileged container from it and manually execute the
-provisioning script. Once done, exit the container and commit the
+provisioning scripts. Once done, exit the container and commit the
 container's state as an image.
+
+The provisioning is split in two scripts so that you can commit an
+intermediary layer and more easily change the Maestro version without
+rebuilding the full lower layer (which is much bigger) and benefit from
+that shared layer.
 
 ```
 $ docker build -t quay.io/signalfuse/maestro-base:<tag> .
 $ docker run -privileged -i -t -privileged quay.io/signalfuse/maestro-base
 root@x:/# .docker/provision.sh
+...
+root@x:/# exit
+$ docker commit <x> quay.io/signalfuse/maestro-base:<tag>
+$ docker run -i -t quay.io/signalfuse/maestro-base
+root@x:/# .docker/maestro.sh
 ...
 root@x:/# exit
 $ docker commit <x> quay.io/signalfuse/maestro-base:<tag>
