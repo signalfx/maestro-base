@@ -56,7 +56,7 @@ Simply start your `Dockerfile` with the following FROM line to get
 started:
 
 ```
-FROM quay.io/signalfuse/maestro-base:0.1.5
+FROM quay.io/signalfuse/maestro-base:0.1.7
 
 # Rest goes here
 ```
