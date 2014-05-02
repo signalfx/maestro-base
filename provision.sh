@@ -20,10 +20,7 @@ apt-get -y install openjdk-7-jdk wget git vim
 wget -q -O - https://get.docker.io/gpg | apt-key add -
 echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list
 apt-get update
-apt-get -y install lxc-docker
-
-# Get pipework.
-wget -O /.docker/pipework https://raw.github.com/jpetazzo/pipework/master/pipework
+apt-get -y install lxc-docker-0.8.0
 
 # Install pipestash (logstash forwarder).
 apt-get -y install python-redis

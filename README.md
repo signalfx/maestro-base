@@ -18,17 +18,19 @@ rebuilding the full lower layer (which is much bigger) and benefit from
 that shared layer.
 
 ```
-$ docker build -t quay.io/signalfuse/maestro-base:<tag> .
-$ docker run -privileged -i -t -privileged quay.io/signalfuse/maestro-base
+$ docker build -t quay.io/signalfuse/maestro-base:base .
+$ docker run -privileged -i -t -privileged quay.io/signalfuse/maestro-base:base bash
 root@x:/# .docker/provision.sh
 ...
 root@x:/# exit
-$ docker commit <x> quay.io/signalfuse/maestro-base:<tag>
-$ docker run -i -t quay.io/signalfuse/maestro-base
-root@x:/# .docker/maestro.sh
+$ docker commit <x> quay.io/signalfuse/maestro-base:provision
+$ docker insert quay.io/signalfuse/maestro-base:provision ./maestro.sh /.docker/maestro.sh
+<y>
+$ docker run -i -t <y> bash
+root@z:/# .docker/maestro.sh
 ...
-root@x:/# exit
-$ docker commit <x> quay.io/signalfuse/maestro-base:<tag>
+root@z:/# exit
+$ docker commit <z> quay.io/signalfuse/maestro-base:<tag>
 ```
 
 What's inside?
