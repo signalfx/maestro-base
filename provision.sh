@@ -21,14 +21,4 @@ wget -q -O - https://get.docker.io/gpg | apt-key add -
 echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list
 apt-get update
 apt-get -y install lxc-docker-0.8.0
-
-# Install pipestash (logstash forwarder).
-apt-get -y install python-redis
-git clone https://github.com/1stone/pipestash.git /.docker/pipestash
-cd /.docker/pipestash
-python setup.py install
-
-# Clean up.
-cd /
-rm -rf /.docker/pipestash /.bash_history
 apt-get clean
