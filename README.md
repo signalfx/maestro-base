@@ -27,10 +27,10 @@ $ docker commit <x> quay.io/signalfuse/maestro-base:provision
 $ docker insert quay.io/signalfuse/maestro-base:provision ./maestro.sh /.docker/maestro.sh
 <y>
 $ docker run -i -t <y> bash
-root@z:/# .docker/maestro.sh
+root@z:/# .docker/maestro.sh <version>
 ...
 root@z:/# exit
-$ docker commit <z> quay.io/signalfuse/maestro-base:<tag>
+$ docker commit <z> quay.io/signalfuse/maestro-base:<version>
 ```
 
 What's inside?
