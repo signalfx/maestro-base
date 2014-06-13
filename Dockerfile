@@ -3,7 +3,7 @@
 # This is pretty much just the base Docker image with Java7, Docker (for the
 # client) and a few other things installed.
 
-FROM base
+FROM ubuntu:14.04
 MAINTAINER Maxime Petazzoni <max@signalfuse.com>
 
 RUN mkdir -p /.docker
