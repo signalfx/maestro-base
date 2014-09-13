@@ -14,11 +14,11 @@ ln -s /bin/true /sbin/initctl
 apt-get update
 
 # Install Java, Python and some tools.
-apt-get -y install openjdk-7-jdk wget git vim
+apt-get -y install openjdk-7-jdk wget git vim unzip lzma
 
 # Install Docker.
 wget -q -O - https://get.docker.io/gpg | apt-key add -
 echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list
 apt-get update
-apt-get -y install lxc-docker-0.8.0
+apt-get -y install lxc-docker-1.1.0
 apt-get clean

@@ -19,18 +19,16 @@ that shared layer.
 
 ```
 $ docker build -t quay.io/signalfuse/maestro-base:base .
-$ docker run -privileged -i -t -privileged quay.io/signalfuse/maestro-base:base bash
+$ docker run --privileged -i -t quay.io/signalfuse/maestro-base:base bash
 root@x:/# .docker/provision.sh
 ...
 root@x:/# exit
 $ docker commit <x> quay.io/signalfuse/maestro-base:provision
-$ docker insert quay.io/signalfuse/maestro-base:provision ./maestro.sh /.docker/maestro.sh
-<y>
-$ docker run -i -t <y> bash
-root@z:/# .docker/maestro.sh <version>
+$ docker run -i -t quay.io/signalfuse/maestro-base:provision bash
+root@y:/# .docker/maestro.sh <version>
 ...
-root@z:/# exit
-$ docker commit <z> quay.io/signalfuse/maestro-base:<version>
+root@y:/# exit
+$ docker commit <y> quay.io/signalfuse/maestro-base:<version>
 ```
 
 What's inside?
