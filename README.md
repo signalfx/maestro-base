@@ -12,29 +12,35 @@ to build applications upon. It contains:
   provisioning of sub-images;
 - `bash` and `vim`, for a sane troubleshooting environment inside the
   container;
-- Python with `pip`;
-- MaestroNG, for its guest utils functions.
+- Python 2.7 with `pip`;
+- [MaestroNG](https://github.com/signalfuse/maestro-ng), for its guest
+  utils functions.
 
-See http://maestro-ng.readthedocs.org/en/master/guest-functions/ for
-more information on how to use Maestro and the guest utils (Python-based
-helper functions for your container init script).
+See [MaestroNG's
+documentation](http://maestro-ng.readthedocs.org/en/master/guest-functions/)
+for more information on how to use Maestro and the guest utils
+(Python-based helper functions for your container init script).
 
-# Choosing a Java runtime
+# Java images
 
 ![Java](https://raw.githubusercontent.com/signalfx/maestro-base/master/logo/java.png)
 
 The `:alp-3.2` base image does not include a Java runtime. For this, two
 additional images are available: `:alp-3.2-jdk7` and `:alp-3.2-jdk8`
-that offer Java 7 and Java 8, respectively.
+that offer Oracle Java JDK7 and JDK8, respectively.
 
 To use, setup your `Dockerfile` like so:
 
 ```Dockerfile
+# Let's use Java8
 FROM quay.io/signalfuse/maestro-base:alp-3.2-jdk8
 ...
 ```
 
 # Building
+
+Instructions on how the Alpine Linux based
+`quay.io/signalfuse/maestro-base` images were built:
 
 ## Building the base image
 
