@@ -38,8 +38,6 @@ rm -rf ${JAVA_HOME}/*src.zip \
        ${JAVA_HOME}/jre/plugin \
        ${JAVA_HOME}/jre/lib/deploy* \
        ${JAVA_HOME}/jre/lib/plugin.jar \
-       ${JAVA_HOME}/jre/lib/jfr.jar \
-       ${JAVA_HOME}/jre/lib/jfr \
        ${JAVA_HOME}/jre/lib/*javafx* \
        ${JAVA_HOME}/jre/lib/*jfx* \
        ${JAVA_HOME}/jre/lib/amd64/libdecora_sse.so \
