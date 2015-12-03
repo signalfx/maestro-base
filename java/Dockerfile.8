@@ -1,7 +1,7 @@
 FROM quay.io/signalfuse/maestro-base:alp-3.2
 MAINTAINER Maxime Petazzoni <max@signalfx.com>
 
-ENV JAVA_VERSION=8 JAVA_UPDATE=60 JAVA_BUILD=27 JAVA_HOME=/opt/jdk8
+ENV JAVA_VERSION=8 JAVA_UPDATE=66 JAVA_BUILD=17 JAVA_HOME=/opt/jdk8
 ENV PATH=$JAVA_HOME/bin:$PATH
 ADD ./install_jdk /opt/install_jdk
 RUN /opt/install_jdk
