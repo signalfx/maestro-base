@@ -1,0 +1,23 @@
+# Dockerfile for the creation of a base image for Maestro-enabled components
+#
+# Copyright (C) 2013-2014 SignalFuse, Inc. All rights reserved.
+# Copyright (C) 2015 SignalFx, Inc. All rights reserved.
+
+FROM centos:7
+MAINTAINER Ted Crossman <tedo@signalfx.com>
+
+ADD ./rootfs /
+RUN yum update -y && yum install -y \
+      bash \
+      ca-certificates \
+      curl \
+      gcc \
+      git \
+      python-devel \
+      vim \
+    && curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py" \
+    && python get-pip.py && rm get-pip.py \
+    && pip install --upgrade pip maestro-ng \
+    && echo "base built $(date)" >> /root/.built
+
+CMD ["/bin/bash"]
