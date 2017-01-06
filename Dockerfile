@@ -1,9 +1,9 @@
 # Dockerfile for the creation of a base image for Maestro-enabled components
 #
 # Copyright (C) 2013-2014 SignalFuse, Inc. All rights reserved.
-# Copyright (C) 2015 SignalFx, Inc. All rights reserved.
+# Copyright (C) 2015-2017 SignalFx, Inc. All rights reserved.
 
-FROM alpine:3.2
+FROM alpine:3.4
 MAINTAINER Maxime Petazzoni <max@signalfx.com>
 
 ADD ./rootfs /
@@ -19,6 +19,7 @@ RUN echo "http://dl-4.alpinelinux.org/alpine/edge/community" >> /etc/apk/reposit
       libc-dev \
       python-dev \
       py-pip \
+      linux-headers \
       vim \
     && pip install --upgrade pip maestro-ng \
     && apk del gcc \
