@@ -3,5 +3,7 @@ MAINTAINER Maxime Petazzoni <max@signalfx.com>
 
 ENV JAVA_VERSION=7 JAVA_UPDATE=80 JAVA_BUILD=15 JAVA_HOME=/opt/jdk7
 ENV PATH=$JAVA_HOME/bin:$PATH
+ADD ./install_glibc /opt/install_glibc
+RUN /opt/install_glibc
 ADD ./install_jdk /opt/install_jdk
 RUN /opt/install_jdk
