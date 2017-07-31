@@ -1,7 +1,7 @@
 FROM quay.io/signalfuse/maestro-base:alp-3.4
 MAINTAINER Maxime Petazzoni <max@signalfx.com>
 
-ENV JAVA_VERSION=8 JAVA_UPDATE=111 JAVA_BUILD=14 JAVA_HOME=/opt/jdk8 JAVA_JCE=unlimited GLIBC_VERSION=2.23-r3
+ENV JAVA_VERSION=8 JAVA_UPDATE=144 JAVA_BUILD=01 DOWNLOAD_HASH=090f390dda5b47b9b721c7dfaa008135 JAVA_HOME=/opt/jdk8 JAVA_JCE=unlimited GLIBC_VERSION=2.23-r3
 ENV PATH=$JAVA_HOME/bin:$PATH
 ADD ./install_glibc /opt/install_glibc
 RUN /opt/install_glibc

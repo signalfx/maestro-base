@@ -6,7 +6,7 @@ set -x
 mkdir -p /opt
 echo "Installing Java JDK ${JAVA_VERSION}u${JAVA_UPDATE}-b${JAVA_BUILD} into ${JAVA_HOME}..."
 curl -jksSLH "Cookie: oraclelicense=accept-securebackup-cookie" \
-    "http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}u${JAVA_UPDATE}-b${JAVA_BUILD}/jdk-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" \
+    "http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}u${JAVA_UPDATE}-b${JAVA_BUILD}/${DOWNLOAD_HASH}/jdk-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" \
   | tar -xzf - -C /opt
 ln -s /opt/jdk1.${JAVA_VERSION}.0_${JAVA_UPDATE} ${JAVA_HOME}
 
