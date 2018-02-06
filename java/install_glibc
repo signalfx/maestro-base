@@ -10,8 +10,8 @@ for pkg in glibc-${GLIBC_VERSION} glibc-bin-${GLIBC_VERSION} glibc-i18n-${GLIBC_
 done
 apk add --allow-untrusted /tmp/*.apk
 rm -v /tmp/*.apk
-( /usr/glibc-compat/bin/localedef --force --inputfile POSIX --charmap UTF-8 C.UTF-8)
-/usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib
-
+( /usr/glibc-compat/bin/localedef -i en_US -f UTF-8 C.UTF-8 || true ) && \
+  echo "export LANG=C.UTF-8" > /etc/profile.d/locale.sh && \
+  /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib
 apk del glibc-i18n
 echo "hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4" >> /etc/nsswitch.conf

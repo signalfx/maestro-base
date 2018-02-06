@@ -3,7 +3,7 @@
 # Copyright (C) 2013-2014 SignalFuse, Inc. All rights reserved.
 # Copyright (C) 2015-2017 SignalFx, Inc. All rights reserved.
 
-FROM alpine:3.4
+FROM alpine:3.7
 MAINTAINER Maxime Petazzoni <max@signalfx.com>
 
 ADD ./rootfs /
