@@ -24,6 +24,9 @@ RUN echo "http://dl-4.alpinelinux.org/alpine/edge/community" >> /etc/apk/reposit
     && pip install --upgrade pip maestro-ng \
     && apk del gcc \
     && rm -rf /var/cache/apk/* \
+    && addgroup -g 9739 -S maestro \
+    && adduser -u 9739 -g 9739 -S -G maestro maestro \
     && echo "base built $(date)" >> /root/.built
+
 
 CMD ["/bin/bash"]
