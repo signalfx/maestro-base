@@ -25,15 +25,15 @@ for more information on how to use Maestro and the guest utils
 
 ![Java](https://raw.githubusercontent.com/signalfx/maestro-base/master/logo/java.png)
 
-The `:alp-3.7` base image does not include a Java runtime. For this, another 
-additional images are available: `:alp-3.7-jdk8`
+The `:alp-3.8` base image does not include a Java runtime. For this, another 
+additional images are available: `:alp-3.8-jdk8`
 that offers the Oracle Java JDK8.
 
 To use, setup your `Dockerfile` like so:
 
 ```Dockerfile
 # Let's use Java8
-FROM quay.io/signalfuse/maestro-base:alp-3.7-jdk8
+FROM quay.io/signalfuse/maestro-base:alp-3.8-jdk8
 ...
 ```
 
@@ -45,7 +45,7 @@ Instructions on how the Alpine Linux based
 ## Building the base image
 
 ```
-$ docker build -t quay.io/signalfuse/maestro-base:alp-3.7 .
+$ docker build -t quay.io/signalfuse/maestro-base:alp-3.8 .
 ```
 
 ## Building a Java base image
@@ -56,6 +56,6 @@ You can find downloads [here](http://www.oracle.com/technetwork/java/javasebusin
 ```
 $ JAVA_VERSION=8 docker build \
   -f java/Dockerfile.${JAVA_VERSION} \
-  -t quay.io/signalfuse/maestro-base:alp-3.7-jdk${JAVA_VERSION} \
+  -t quay.io/signalfuse/maestro-base:alp-3.8-jdk${JAVA_VERSION} \
   java/
 ```
