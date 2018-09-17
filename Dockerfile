@@ -21,6 +21,7 @@ RUN echo "http://dl-4.alpinelinux.org/alpine/edge/community" >> /etc/apk/reposit
       py-pip \
       linux-headers \
       vim \
+      su-exec \
     && pip install --upgrade pip maestro-ng \
     && apk del gcc \
     && rm -rf /var/cache/apk/* \
