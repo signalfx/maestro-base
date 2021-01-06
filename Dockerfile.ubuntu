@@ -1,0 +1,19 @@
+# Dockerfile for the creation of a base image for Maestro-enabled components
+#
+# Copyright (C) 2015-2018 SignalFx, Inc. All rights reserved.
+FROM ubuntu:20.10
+
+RUN export DEBIAN_FRONTEND=noninteractive && \
+    apt-get -qq -y update && \
+    apt-get -qq -y install --no-install-recommends \
+        --no-install-suggests \
+        unzip curl ca-certificates python python-setuptools \
+        python-netifaces && \
+     curl https://bootstrap.pypa.io/get-pip.py --output /tmp/get-pip.py && \
+     python2 /tmp/get-pip.py && \
+     pip2 install --upgrade wheel && \
+     pip2 install maestro-ng && \
+     apt-get -qq -y --force-yes --purge remove \
+        python-setuptools && \
+     echo y | pip2 uninstall pip && \
+     rm -Rf /tmp/get-pip.py *.deb /var/lib/apt/lists/* /var/cache/apt/*
